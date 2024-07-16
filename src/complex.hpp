@@ -3,9 +3,6 @@
 
 #include <iostream>
 
-/**
- * @brief Complex class represents a complex number.
- */
 class Complex
 {
 public:
@@ -33,6 +30,31 @@ public:
     {
         return (real > other.real) || (real == other.real && imag > other.imag);
     }
+
+    // Overloading the not equal operator
+    bool operator!=(const Complex &other) const
+    {
+        return !(*this == other);
+    }
+
+
+    bool operator<(const Complex &other) const
+    {
+        return !(*this > other) && !(*this == other);
+    }
+
+    bool operator>=(const Complex &other) const
+    {
+        return !(*this < other);
+    }
+
+    bool operator<=(const Complex &other) const
+    {
+        return !(*this > other);
+    }
+
+    double getReal() const { return real; }
+    double getImag() const { return imag; }
 
 private:
     double real, imag;

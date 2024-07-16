@@ -3,12 +3,14 @@
 
 #include <vector>
 #include <memory>
+#include "complex.h"
 
 template <typename T>
 class Node
 {
 public:
     T value;
+    std::weak_ptr<Node<T>> parent;
     std::vector<std::shared_ptr<Node<T>>> children;
 
     Node(T val) : value(val) {}
